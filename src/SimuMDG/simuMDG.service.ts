@@ -4,13 +4,22 @@ import { Injectable } from '@nestjs/common';
 export class TasksService {
 
     private tasks = [
-       { id: 1,
+       {
+         id: 1,
         title: "Task 1",
         description: "Description for Task 1",
        }
     ]
 
+    getHello() {
+        return 'Hello from Server';
+    }
+
     getTasks(){
         return this.tasks;
+    }
+
+    createTask() {
+        return "Creando Tarea";
     }
 }
