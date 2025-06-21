@@ -10,7 +10,7 @@ export class TasksController {
         return this.tasksService.getPositiveResponse();
     }
 
-    @Post()
+    @Post("/sendPin")
     postValidationForMsisdn(@Body("msisdn") msisdn: number) {
         return this.tasksService.postResponse(msisdn);
     }

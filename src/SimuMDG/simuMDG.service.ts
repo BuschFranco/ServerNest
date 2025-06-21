@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { stat } from 'fs';
 
 @Injectable()
 export class TasksService {
@@ -29,13 +30,18 @@ export class TasksService {
     postResponse(msisdn: any) {
         const msisdnNum = Number(msisdn);
 
-        if (!msisdnNum || isNaN(msisdnNum) || msisdnNum <= 0) {
+        if (isNaN(msisdnNum) || msisdnNum <= 0) {
             return {
                 status: 400,
                 message: "Invalid MSISDN provided",
                 error: "Bad Request"
             };
-        } else {
+        } else if(!msisdnNum){
+            return {
+                status: 400,
+                message: "MSISDN is required, animal",
+            }
+        }else{
             return {
                 status: 200,
                 message: "Nice MSISDN provided bro, are you sure you are not a bot?",
