@@ -6,7 +6,7 @@ export class TasksController {
     constructor(private tasksService:TasksService){ }
 
     @Get("/")
-    getHello() {
+    index() {
         return this.tasksService.getPositiveResponse();
     }
 
