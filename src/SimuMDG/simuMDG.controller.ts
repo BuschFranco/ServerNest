@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Post, Param, Body } from '@nestjs/common';
 import { TasksService } from './simuMDG.service';
 
 @Controller("/simuMDG")
@@ -7,16 +7,21 @@ export class TasksController {
 
     @Get("/")
     getHello() {
-        return this.tasksService.getHello();
+        return this.tasksService.getPositiveResponse();
     }
 
-    @Get("/get")
-    getAllTasks(){
-        return this.tasksService.getTasks();
+    @Post()
+    postValidationForMsisdn(@Body("msisdn") msisdn: number) {
+        return this.tasksService.postResponse(msisdn);
     }
 
-    @Post("/create")
+    @Post("/validatePin")
+    postValidationForPin(@Body("pin") pin: number){
+        return this.tasksService.getPinResponse(pin);
+    }
+
+    @Get("/negative")
     createTask() {
-        return this.tasksService.createTask();
+        return this.tasksService.getNegativeResponse();
     }
 }
