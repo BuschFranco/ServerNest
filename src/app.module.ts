@@ -7,7 +7,7 @@ import { Msisdn } from './SimuMDG/simuMDG.entity';
 
 @Module({
   imports: [TasksModule, HeMdgModule, 
-    TypeOrmModule.forRoot({
+    /*TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
       port: 3306,
@@ -16,7 +16,7 @@ import { Msisdn } from './SimuMDG/simuMDG.entity';
       database: 'servernest',
       entities: [Msisdn],
       synchronize: false
-    }),
+    }),*/
   ],
   controllers: [AppController],
 })
